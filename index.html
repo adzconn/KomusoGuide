@@ -3,48 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Komuso Guide</title>
+    <title>Video Player</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
+        body {
+            background-color: lightblue; /* Set background to light blue */
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: black;
+            height: 100vh;
+            margin: 0;
         }
         video {
-            width: 95%;
-            height: 95%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            border: 3px solid #fff; /* Optional: adds a white border around the video */
         }
     </style>
 </head>
-<body style="background-color:#1c87c9;">
+<body>
 
-<video id="video" autoplay>
-    <source src="https://stream.mux.com/lyyeFRIw7Pkn8NaATm8EL01RZKIAMKn4chgKZWbs7HxY.m3u8?max_resolution=720p" type="application/x-mpegURL">
-    Your browser does not support the video tag.
-</video>
-
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-<script>
-    var video = document.getElementById('video');
-    if (Hls.isSupported()) {
-        var hls = new Hls();
-        hls.loadSource('https://stream.mux.com/lyyeFRIw7Pkn8NaATm8EL01RZKIAMKn4chgKZWbs7HxY.m3u8?max_resolution=720p');
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function() {
-            video.play();
-        });
-    }
-    // Fallback for browsers that do not support HLS.js
-    else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = 'https://stream.mux.com/lyyeFRIw7Pkn8NaATm8EL01RZKIAMKn4chgKZWbs7HxY.m3u8?max_resolution=720p';
-        video.play();
-    }
-</script>
+    <video autoplay muted controls>
+        <source src="https://stream.mux.com/lyyeFRIw7Pkn8NaATm8EL01RZKIAMKn4chgKZWbs7HxY.m3u8?max_resolution=720p" type="application/x-mpegURL">
+        Your browser does not support the video tag.
+    </video>
 
 </body>
 </html>

@@ -14,18 +14,31 @@
             margin: 0;
         }
         video {
-            max-width: 100%;
-            max-height: 100%;
+            width: 80vw; /* Initially, the video takes up 80% of the viewport width */
+            height: 80vh; /* Initially, the video takes up 80% of the viewport height */
             border: 3px solid #fff; /* Optional: adds a white border around the video */
+            transition: all 0.3s ease; /* Smooth transition when resizing */
+            cursor: pointer; /* Show pointer cursor to indicate interactivity */
+        }
+        video.clicked {
+            width: 50vw; /* When clicked, the video becomes smaller */
+            height: 50vh; /* When clicked, the video becomes smaller */
         }
     </style>
 </head>
 <body>
 
-    <video autoplay muted controls>
+    <video autoplay controls onclick="toggleSize(this)">
         <source src="https://stream.mux.com/lyyeFRIw7Pkn8NaATm8EL01RZKIAMKn4chgKZWbs7HxY.m3u8?max_resolution=720p" type="application/x-mpegURL">
         Your browser does not support the video tag.
     </video>
+
+    <script>
+        function toggleSize(videoElement) {
+            // Toggle the 'clicked' class on the video element
+            videoElement.classList.toggle('clicked');
+        }
+    </script>
 
 </body>
 </html>
